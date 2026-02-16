@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "Use this free input to add any payment method you would like to offer.",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "Go back",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "Keys",
   "Learn how to verify": "Learn how to verify",
   "Messages": "Messages",

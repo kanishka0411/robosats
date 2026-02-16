@@ -29,6 +29,7 @@ import { GarageContext, UseGarageStoreType } from '../../contexts/GarageContext'
 import { Order, Slot } from '../../models';
 import { nip19 } from 'nostr-tools';
 import { EncryptedChatMessage } from '../TradeBox/EncryptedChat';
+import { isValidNostrPubkey } from '../../utils/nostr';
 
 function CredentialTextfield(props): React.JSX.Element {
   return (
@@ -244,22 +245,34 @@ const AuditPGPDialog = ({
                 'Your nostr public key. Your peer uses it to encrypt messages only you can read.',
               )}
               label={t('Your public key')}
-              value={nip19.npubEncode(slot?.nostrPubKey ?? '')}
+              value={
+                isValidNostrPubkey(slot?.nostrPubKey)
+                  ? nip19.npubEncode(slot!.nostrPubKey!)
+                  : t('Invalid pubkey')
+              }
               copiedTitle={t('Copied!')}
             />
 
-            {order && (
-              <CredentialTextfield
-                tooltipTitle={t(
-                  'Your peer nostr public key. You use it to encrypt messages only he can read and to verify your peer signed the incoming messages.',
-                )}
-                label={t('Peer public key')}
-                value={nip19.npubEncode(
-                  order.is_maker ? order.taker_nostr_pubkey : order.maker_nostr_pubkey,
-                )}
-                copiedTitle={t('Copied!')}
-              />
-            )}
+            {order &&
+              (() => {
+                const peerPubkey = order.is_maker
+                  ? order.taker_nostr_pubkey
+                  : order.maker_nostr_pubkey;
+                return (
+                  <CredentialTextfield
+                    tooltipTitle={t(
+                      'Your peer nostr public key. You use it to encrypt messages only he can read and to verify your peer signed the incoming messages.',
+                    )}
+                    label={t('Peer public key')}
+                    value={
+                      isValidNostrPubkey(peerPubkey)
+                        ? nip19.npubEncode(peerPubkey)
+                        : t('Invalid pubkey')
+                    }
+                    copiedTitle={t('Copied!')}
+                  />
+                );
+              })()}
 
             <CredentialTextfield
               tooltipTitle={t(
@@ -285,15 +298,20 @@ const AuditPGPDialog = ({
                     color='primary'
                     variant='contained'
                     onClick={() => {
-                      const object = {
-                        own_public_key: nip19.npubEncode(slot?.nostrPubKey ?? ''),
+                      const object: Record<string, string> = {
+                        own_public_key: isValidNostrPubkey(slot?.nostrPubKey)
+                          ? nip19.npubEncode(slot!.nostrPubKey!)
+                          : t('Invalid pubkey'),
                         private_key: slot?.nostrSecKey ? nip19.nsecEncode(slot?.nostrSecKey) : '',
                       };
 
                       if (order) {
-                        object.peer_public_key = nip19.npubEncode(
-                          order.is_maker ? order.taker_nostr_pubkey : order.maker_nostr_pubkey,
-                        );
+                        const peerPubkey = order.is_maker
+                          ? order.taker_nostr_pubkey
+                          : order.maker_nostr_pubkey;
+                        object.peer_public_key = isValidNostrPubkey(peerPubkey)
+                          ? nip19.npubEncode(peerPubkey)
+                          : t('Invalid pubkey');
                       }
 
                       return client === 'mobile'

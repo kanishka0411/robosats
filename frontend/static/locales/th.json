@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "ใช้การป้อนข้อมูลนี้ฟรี เพื่อเพิ่มวิธีการชำระเงินที่คุณต้องการจะเสนอ",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "ย้อนกลับ",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "คีย์",
   "Learn how to verify": "เรียนรู้วิธีการยืนยัน",
   "Messages": "ข้อความ",

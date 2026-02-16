@@ -9,9 +9,17 @@ export const getNivoScheme: (theme: MuiTheme) => NivoTheme = (theme) => {
     },
     axis: {
       ticks: {
+        text: {
+          fill: 'rgb(0, 0, 0)',
+        },
         line: {
           strokeWidth: 1,
           stroke: 'rgb(0, 0, 0)',
+        },
+      },
+      legend: {
+        text: {
+          fill: 'rgb(0, 0, 0)',
         },
       },
       domain: {
@@ -36,6 +44,11 @@ export const getNivoScheme: (theme: MuiTheme) => NivoTheme = (theme) => {
         line: {
           strokeWidth: 1,
           stroke: 'rgb(255, 255, 255)',
+        },
+      },
+      legend: {
+        text: {
+          fill: 'rgb(255, 255, 255)',
         },
       },
       domain: {

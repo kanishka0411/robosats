@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "Tumia pembejeo hii huru kuongeza njia yoyote ya malipo unayotaka kutoa.",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "Rudi nyuma",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "Funguo",
   "Learn how to verify": "Jifunze jinsi ya kuthibitisha",
   "Messages": "Ujumbe",

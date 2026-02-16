@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "Erabili sarrera aske hau nahi duzun ordainketa metodoa gehitzeko.",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "Atzera joan",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "Giltzak",
   "Learn how to verify": "Ikasi nola egiaztatu",
   "Messages": "Mezuak",

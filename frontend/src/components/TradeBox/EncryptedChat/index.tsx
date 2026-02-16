@@ -15,6 +15,7 @@ import EncryptedSocketChat from './EncryptedSocketChat';
 import { encryptFile, generateKey } from '../../../utils/crypto/xchacha20';
 import { uploadToBlossom, computeSha256 } from '../../../utils/blossom';
 import { createFileMessage, type ParsedFileMessage } from '../../../utils/nip17File';
+import { isValidNostrPubkey } from '../../../utils/nostr';
 
 interface Props {
   order: Order;
@@ -81,7 +82,12 @@ const EncryptedChat: React.FC<Props> = ({
     const peerPublicKey = order.is_maker ? order.taker_nostr_pubkey : order.maker_nostr_pubkey;
     const ownPublicKey = order.is_maker ? order.maker_nostr_pubkey : order.taker_nostr_pubkey;
 
-    if (!slot?.nostrSecKey || !peerPublicKey || !ownPublicKey) return;
+    if (
+      !slot?.nostrSecKey ||
+      !isValidNostrPubkey(peerPublicKey) ||
+      !isValidNostrPubkey(ownPublicKey)
+    )
+      return;
 
     try {
       const messageEvent: EventTemplate = {
@@ -140,7 +146,13 @@ const EncryptedChat: React.FC<Props> = ({
     const peerPublicKey = order.is_maker ? order.taker_nostr_pubkey : order.maker_nostr_pubkey;
     const ownPublicKey = order.is_maker ? order.maker_nostr_pubkey : order.taker_nostr_pubkey;
 
-    if (!slot?.nostrSecKey || !peerPublicKey || !ownPublicKey || !coordinator) return;
+    if (
+      !slot?.nostrSecKey ||
+      !isValidNostrPubkey(peerPublicKey) ||
+      !isValidNostrPubkey(ownPublicKey) ||
+      !coordinator
+    )
+      return;
 
     try {
       const key = generateKey();

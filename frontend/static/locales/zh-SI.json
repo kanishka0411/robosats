@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "使用此空白输入来添加您要提供的任何付款方式。",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "返回",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "钥匙",
   "Learn how to verify": "学习如何验证",
   "Messages": "消息",

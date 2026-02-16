@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "Utilisez ce champ libre pour ajouter tout mode de paiement que vous souhaitez offrir.",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "Retour",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "Clés",
   "Learn how to verify": "Apprendre à vérifier",
   "Messages": "Messages",

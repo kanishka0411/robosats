@@ -222,6 +222,7 @@
   "Use this free input to add any payment method you would like to offer.": "Použijte toto pole pro přidání jakékoli platební metody, kterou byste chtěli nabídnout.",
   "#22": "Phrases in components/Dialogs/AuditPGP.tsx",
   "Go back": "Jít zpět",
+  "Invalid pubkey": "Invalid pubkey",
   "Keys": "Klíče",
   "Learn how to verify": "Naučte se, jak ověřovat",
   "Messages": "Zprávy",

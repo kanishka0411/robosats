@@ -147,4 +147,13 @@ const hexToBytes: (hex: string) => Uint8Array = (hex) => {
   return bytes;
 };
 
+/**
+ * Validates that a string is a valid 32-byte hex-encoded Nostr pubkey.
+ * Must be exactly 64 hex characters (case-insensitive).
+ */
+export const isValidNostrPubkey = (pubkey: string | undefined | null): boolean => {
+  if (!pubkey) return false;
+  return /^[0-9a-fA-F]{64}$/.test(pubkey);
+};
+
 export default eventToPublicOrder;
